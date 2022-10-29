@@ -1,0 +1,39 @@
+.header {
+  border-bottom: 2px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  list-style-type: none;
+  &__item {
+    margin: 0 25px;
+  }
+}
+
+.footer {
+  text-align: center;
+  border-top: 2px solid blue;
+}
+.fio,
+.joke {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  &_photo {
+    width: 200px;
+    border-radius: 20%;
+    margin: 20px;
+  }
+}
+
+.container {
+  width: 1260px;
+  margin: 0 auto;
+}
+
+.skill {
+  margin-top: 0;
+}
