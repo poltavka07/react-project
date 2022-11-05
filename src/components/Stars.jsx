@@ -1,14 +1,24 @@
 import { useState } from "react";
 
-const Star = ({ active, id, setRate }) => {
+const Star = ({ active, id, setRate, setHover, activeLight }) => {
   return (
     <div
       onClick={() => {
         setRate(id);
       }}
+      onMouseEnter={() => {
+        setHover(id);
+      }}
+      onMouseLeave={() => {
+        setHover(active);
+      }}
+      onDoubleClick={() => {
+        setRate(0);
+      }}
       style={{
         padding: 5,
-        color: id <= active ? "gold" : null,
+        backgroundColor: id <= active ? "blue" : null,
+        color: id <= (activeLight || active) ? "gold" : null,
       }}
     >
       <svg
@@ -28,11 +38,19 @@ const Star = ({ active, id, setRate }) => {
 
 const StarRating = ({ rate = 5 }) => {
   const [value, setValue] = useState(rate);
+  const [valueLight, setValueLight] = useState();
 
   return (
     <div className="rating">
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
-        <Star id={index} setRate={setValue} active={value} key={index}></Star>
+        <Star
+          id={index}
+          setRate={setValue}
+          setHover={setValueLight}
+          active={value}
+          activeLight={valueLight}
+          key={index}
+        ></Star>
       ))}
     </div>
   );
