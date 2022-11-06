@@ -38,7 +38,9 @@
   margin-top: -15px;
 }
 
-.rating {
+.rating,
+.country {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }

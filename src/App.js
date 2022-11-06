@@ -4,6 +4,7 @@ import "./App.scss";
 // import { Describe, Fish } from "./components/FishData";
 // import Footer from "./components/Footer";
 import StarRating from "./components/Stars";
+// import StarClRating from "./components/StarsClass";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       </div>
       <Footer></Footer> */}
       <StarRating></StarRating>
+      {/* <StarClRating></StarClRating> */}
     </>
   );
 }

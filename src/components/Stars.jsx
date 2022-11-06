@@ -10,10 +10,10 @@ const Star = ({ active, id, setRate, setHover, activeLight }) => {
         setHover(id);
       }}
       onMouseLeave={() => {
-        setHover(active);
+        setHover();
       }}
       onDoubleClick={() => {
-        setRate(0);
+        setRate();
       }}
       style={{
         padding: 5,
@@ -35,24 +35,56 @@ const Star = ({ active, id, setRate, setHover, activeLight }) => {
     </div>
   );
 };
+const Let = ({ letId, setHoverLet, activeLet }) => {
+  return (
+    <div
+      onMouseEnter={() => {
+        setHoverLet(letId);
+      }}
+      onMouseLeave={() => {
+        setHoverLet();
+      }}
+      style={{
+        padding: 5,
+        fontSize: 100,
+        color: activeLet !== letId ? "gold" : "blue",
+      }}
+    >
+      {letId}
+    </div>
+  );
+};
 
 const StarRating = ({ rate = 5 }) => {
   const [value, setValue] = useState(rate);
   const [valueLight, setValueLight] = useState();
+  const [valueLet, setValueLet] = useState();
 
   return (
-    <div className="rating">
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
-        <Star
-          id={index}
-          setRate={setValue}
-          setHover={setValueLight}
-          active={value}
-          activeLight={valueLight}
-          key={index}
-        ></Star>
-      ))}
-    </div>
+    <>
+      <div className="rating">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+          <Star
+            id={index}
+            setRate={setValue}
+            setHover={setValueLight}
+            active={value}
+            activeLight={valueLight}
+            key={index}
+          ></Star>
+        ))}
+      </div>
+      <div className="country">
+        {["U", "k", "r", "a", "i", "n", "e"].map((index) => (
+          <Let
+            letId={index}
+            setHoverLet={setValueLet}
+            activeLet={valueLet}
+            key={index}
+          ></Let>
+        ))}
+      </div>
+    </>
   );
 };
 
